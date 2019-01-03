@@ -14,7 +14,10 @@ namespace Base.Lesson_5
         {
             //ArrayListExample();
             //GenericListOfNeighborSearch();
-            DictionaryOfNeighborSearchh();
+            //DictionaryOfNeighborSearchh();
+            //ArrayListPoemSort();
+            //ArrayListOfSongsSort();
+            GenericListOfSongsSort();
 
             Console.ReadLine();
         }
@@ -75,10 +78,65 @@ namespace Base.Lesson_5
             Console.WriteLine("Write flat number: ");
             var flatNum = int.Parse(Console.ReadLine());
 
-            string name = floorNeighbors[flatNum].FullName;
-            int number = floorNeighbors[flatNum].PhoneNumber;
-            Console.WriteLine("Name: " + name + "\nPhone number: " + number);
+            if (floorNeighbors.ContainsKey(flatNum))
+            {
+                string name = floorNeighbors[flatNum].FullName;
+                int number = floorNeighbors[flatNum].PhoneNumber;
+                Console.WriteLine("Name: " + name + "\nPhone number: " + number);
+            }
+        }
 
+        public static void ArrayListPoemSort()
+        {
+            ArrayList poem = new ArrayList();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Write a line of poem:");
+                string text = Console.ReadLine();
+                poem.Add(text);
+            }
+
+            poem.Sort();
+            poem.RemoveAt(4);
+            object[] poemArray = poem.ToArray();
+
+            Array.ForEach(poemArray, Console.WriteLine);
+        }
+
+        public static void ArrayListOfSongsSort()
+        {
+            ArrayList poem = new ArrayList();
+            Song song = new Song();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Write a line of poem:");
+                string text = Console.ReadLine();
+                song.Lyrics += text + "\n";
+
+            }
+
+            //poem.Sort();
+            poem.RemoveAt(4);
+            object[] poemArray = poem.ToArray();
+
+            Console.WriteLine(song.Lyrics);
+
+        }
+
+        public static void GenericListOfSongsSort()
+        {
+            List<Song> poem = new List<Song>();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("Write a line of poem:");
+                string text = Console.ReadLine();
+                poem.Add(new Song() { Lyrics = text });
+
+            }
+
+            //poem.Sort();
+            poem.RemoveAt(4);
+            poem.ForEach(Console.WriteLine);
         }
 
     }
